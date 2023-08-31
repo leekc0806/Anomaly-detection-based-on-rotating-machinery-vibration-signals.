@@ -8,7 +8,6 @@
 
 테스트 단계에서는 훈련된 모델에 테스트 데이터를 입력하여 각 윈도우 별로 이상 점수를 계산합니다. F1-score를 통해 모델의 성능을 평가하고 Confusion matrix를 통해서 시각화합니다. 이를 통해 모델의 성능을 직관적으로 알 수 있습니다. 프로젝트의 코드는 특정 데이터셋에 국한되지 않고, data format을 통일하면 다른 다변량 시계열 데이터셋에도 적용할 수 있도록 설계되었습니다.
 
-
 ### 전처리(Preprocessing)
 Preprocessor.py 파일을 실행하여 훈련, 검증, 시험 데이터를 전처리합니다. Preprocessing 함수는 데이터 위치, 데이터 클래스 개수, 센서 개수, 측정 길이, 샘플링 주기를 입력으로 받아서, 순서대로 훈련, 검증, 시험 데이터를 출력합니다. 프로그램은 .csv 파일을 불러와 sensor_list 변수에 저장한 후, 측정 길이와 샘플링 주기에 맞게 배열을 생성하여 보간법을 실행합니다. 보간법은 각 센서별로 적용되고, 그 결과는 y_new 리스트에 저장됩니다. 데이터는 클래스별로 재구성되어 concated_dfs에 저장되며, 변환된 데이터는 torch.DataLoader를 사용하여 모델 학습에 적합한 형태로 변환됩니다.
 
@@ -18,12 +17,18 @@ AnomalyTransformer.py 파일의 AnomalyTransformer 클래스를 사용하여 다
 ### 이상 탐지 검증 및 평가 (Anomaly detection test and evaluation)
 훈련된 모델에 시험 데이터셋을 입력하면 각 데이터의 이상 점수를 얻을 수 있습니다. 각 시간 지점마다 출력된 이상 점수를 window size로 나누어 각 window의 가장 큰 값을 window의 대표 이상 점수로 설정합니다. 검증 데이터의 IQR 범위를 사용하여 임계값을 설정하고, 이상 데이터를 탐지합니다. 모델의 성능은 Confusion matrix와 F1-score를 사용하여 평가됩니다. Confusion matrix는 모델의 예측 값과 실제 값 사이의 관계를 나타내며, F1-score는 정밀도와 재현율의 조화 평균으로 이상 탐지 모델의 종합적인 성능을 평가합니다. Confusion matrix와 F1-score를 사용하여 모델의 성능을 직관적으로 파악할 수 있습니다.
 
+
+
 ## 요구 데이터 형식
 코드 실행을 위해 데이터셋은 다음 format으로 저장되어야 합니다. 데이터셋은 CSV 파일로 구성되어 있으며, 각 파일은 센서별로 분리되어 있어야 합니다. 센서 데이터의 열(column)은 시간, 정상, 이상1, ... 이상n의 순서로 구성되어야 합니다. 입력값으로 주어진 폴더에는 다른 CSV 파일이 없어야 합니다. Preprocessing 함수를 사용하여 데이터를 모델에 적합한 형태로 변환할 수 있습니다.
+
+
 
 ## 참조
 1. Anomaly Transformer: Time Series Anomaly Detection with Association Discrepancy(Jiehui Xu et al.)
 2. KAMP-AI https://www.kamp-ai.kr/
+
+
 
 ## **사사문구(acknowledgement)**  
 정부(과학기술정보통신부)의 재원으로 정보통신기획평가원의 지원을 받아 수행된 연구임 (No.RS-2022-00155911, 인공지능융합혁신인재양성(경희대학교))     
