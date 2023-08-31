@@ -24,13 +24,13 @@ AnomalyTransformer.py 파일의 AnomalyTransformer 클래스를 사용하여 다
 
 
 
-## 참조
+## 참조(Reference)
 1. Anomaly Transformer: Time Series Anomaly Detection with Association Discrepancy(Jiehui Xu et al.)
 2. KAMP-AI https://www.kamp-ai.kr/
 
 
 
-## **사사문구(acknowledgement)**  
+## **사사문구(Acknowledgement)**  
 정부(과학기술정보통신부)의 재원으로 정보통신기획평가원의 지원을 받아 수행된 연구임 (No.RS-2022-00155911, 인공지능융합혁신인재양성(경희대학교))     
 
 Institute of Information &amp; communications Technology Planning &amp; Evaluation (IITP) grant funded by the Korea government(MSIT) (No.RS-2022-00155911, Artificial Intelligence Convergence Innovation Human Resources Development (Kyung Hee University))
