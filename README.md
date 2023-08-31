@@ -15,7 +15,7 @@ Preprocessor.py 파일을 실행하여 훈련, 검증, 시험 데이터를 전�
 ### 이상 탐지 모델(Anomaly Transformer)
 AnomalyTransformer.py 파일의 AnomalyTransformer 클래스를 사용하여 다변량 시계열 이상 탐지 모델을 구현합니다. 이 모델은 각 시간 지점의 상관관계를 분석하여 정상 데이터의 패턴을 학습합니다. 모델은 윈도우 크기, 센서 개수, 임베딩 차원, 멀티 헤드 개수, 레이어 개수를 입력으로 받습니다. AnomalyTransformer를 실행하면 DataEmbedding 클래스를 사용하여 센서 차원을 임베딩 차원으로 증강하고, 위치 인코딩과 값 인코딩을 추가합니다. 그 후, AnomalyAttention 클래스를 사용하여 쿼리, 키, 값, 시그마를 구성합니다. 이 값들은 훈련 과정에서 최적의 시리즈 연관성(series association)과 이전 연관성(prior association)을 구성하는 데 사용됩니다. 시리즈 연관성은 시간 지점 간의 유사성에 가중치를 부여하여 전체 시계열에 대한 정상 시간 지점의 유사성을 높입니다. Prior association은 인접한 시간 지점 간의 유사성에 가중치를 부여하여 이웃한 시간 지점의 정상 유사성을 고려합니다. 시리즈 연관성은 디코딩 레이어를 통해 원본 데이터로 복원됩니다. 훈련 과정에서는 입력값과 복원값, 시리즈 및 이전 연관성의 오차를 최소화하기 위해 훈련이 진행됩니다.
 
-### 이상 탐지 및 시각화 (Anomaly detection and visualization)
+### 이상 탐지 검증 및 평가 (Anomaly detection test and evaluation)
 훈련된 모델에 시험 데이터셋을 입력하면 각 데이터의 이상 점수를 얻을 수 있습니다. 각 시간 지점마다 출력된 이상 점수를 window size로 나누어 각 window의 가장 큰 값을 window의 대표 이상 점수로 설정합니다. 검증 데이터의 IQR 범위를 사용하여 임계값을 설정하고, 이상 데이터를 탐지합니다. 모델의 성능은 Confusion matrix와 F1-score를 사용하여 평가됩니다. Confusion matrix는 모델의 예측 값과 실제 값 사이의 관계를 나타내며, F1-score는 정밀도와 재현율의 조화 평균으로 이상 탐지 모델의 종합적인 성능을 평가합니다. Confusion matrix와 F1-score를 사용하여 모델의 성능을 직관적으로 파악할 수 있습니다.
 
 ## 요구 데이터 형식
