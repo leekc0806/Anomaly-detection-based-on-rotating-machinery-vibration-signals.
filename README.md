@@ -9,8 +9,8 @@
 테스트 단계에서는 훈련된 모델에 테스트 데이터를 입력하여 각 윈도우 별로 이상 점수를 계산합니다. F1-score를 통해 모델의 성능을 평가하고 Confusion matrix를 통해서 시각화합니다. 이를 통해 모델의 성능을 직관적으로 알 수 있습니다. 본 프로그램은 특정 데이터셋에 국한되지 않고, 사용 방법을 따라하면 다른 다변량 시계열 데이터셋에도 적용할 수 있도록 설계되었습니다.
 
 ## 참조
-Anomaly Transformer: Time Series Anomaly Detection with Association Discrepancy(Jiehui Xu et al.)
-KAMP-AI https://www.kamp-ai.kr/
+1. Anomaly Transformer: Time Series Anomaly Detection with Association Discrepancy(Jiehui Xu et al.)
+2. KAMP-AI https://www.kamp-ai.kr/
 
 ## **Ackowledgement**  
 정부(과학기술정보통신부)의 재원으로 정보통신기획평가원의 지원을 받아 수행된 연구임 (No.RS-2022-00155911, 인공지능융합혁신인재양성(경희대학교))     
